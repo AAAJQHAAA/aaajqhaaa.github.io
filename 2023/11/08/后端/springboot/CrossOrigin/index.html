@@ -19,10 +19,12 @@
     <link rel="dns-prefetch" href="https://aaajqhaaa.github.io">
     <!--SEO-->
 
-<meta name="keywords" content="" />
+<meta name="keywords" content="lombok注解" />
 
 
-<meta name="description" content="前后端等相关笔记" />
+<meta name="description" content="作用
+@SneakyThrows注解为代码生成一个tr&#123;&#125;catch&#123;&#125;块,并把异常向上抛出来
+作用在方法、构造方法上123456789101112pac..." />
 
 
 <meta name="robots" content="all" />
@@ -33,7 +35,7 @@
 
 <title>
     
-    categories |
+    注解@SneakyThrows |
     
     JQH
 </title>
@@ -138,145 +140,109 @@
     <section class="content-wrap">
         <div class="container">
             <div class="row">
-                <main class="col-md-8 main-content ">
-                    <div>
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="注解@SneakyThrows">
+            
+            注解@SneakyThrows
+            
+        </h1>
+        <div class="post-meta">
     
-    <article class="post">
-        <h1 class="post-head">共计
-            2个分类</h1>
-        <div class="post-body">
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
             
-            <li class="post-items">
-                <a href="/categories/其他/" title="其他" target="_blank">
-                    其他
-                </a>
-            </li>
+            <a class="tag-none-link" href="/tags/lombok%E6%B3%A8%E8%A7%A3/" rel="tag">lombok注解</a>
             
-            <li class="post-items">
-                <a href="/categories/后端/" title="后端" target="_blank">
-                    后端
-                </a>
-            </li>
-            
-        </div>
-    </article>
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2023/11/08</span>
+    </span>
+    
     
 </div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><ul>
+<li><code>@SneakyThrows</code>注解为代码生成一个<code>tr&#123;&#125;catch&#123;&#125;</code>块,并把异常向上抛出来</li>
+<li>作用在方法、构造方法上<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> lombok;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.ElementType;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Retention;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.RetentionPolicy;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Target;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Target(&#123;ElementType.METHOD, ElementType.CONSTRUCTOR&#125;)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.SOURCE)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> SneakyThrows &#123;</span><br><span class="line">    Class&lt;? <span class="keyword">extends</span> <span class="title class_">Throwable</span>&gt;[] value() <span class="keyword">default</span> &#123;Throwable.class&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>java中常见的异常有两种：<ul>
+<li><code>Exception</code>即非运行时异常(编译异常)</li>
+<li><code>RuntimeException</code>即运行时异常</li>
+</ul>
+</li>
+<li>正常情况：编译异常需要处理（增加<code>tr&#123;&#125;catch&#123;&#125;</code>或者方法抛出去）<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public void hhh(User user)&#123;</span><br><span class="line">  try &#123;</span><br><span class="line">    int userId = user.getId();</span><br><span class="line">  &#125; catch (Exception e) &#123;</span><br><span class="line">    throw new RuntimeException(e);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><code>@SneakyThrows</code>注解会自动为代码生成一个上面的<code>tr&#123;&#125;catch&#123;&#125;</code>块,并把异常向上抛出来（编辑器不会报错）<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@SneakyThrows</span><br><span class="line">public void hhh(User user)&#123;</span><br><span class="line">   int userId = user.getId();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">JQH</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2023/11/08/%E5%90%8E%E7%AB%AF/lombok/SneakyThrows/" class="pre-post btn btn-default" title='SneakyThrows'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            SneakyThrows</span>
+    </a>
+    
+    
+    <a href="/2023/11/03/%E5%85%B6%E4%BB%96/onlyOfficeDocumentServer/" class="next-post btn btn-default" title='OnlyOffice Document Server教程'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            OnlyOffice Document Server教程</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+<p>评论系统未开启，无法评论！</p>
+
+</div>
+
                 </main>
                 
-                    
-<aside class="col-md-4 sidebar">
-    
-    
-<div class="widget">
-    <h3 class="title">
-        搜索
-    </h3>
-    <div id="search-form">
-        <div id="result-mask" class="hide"></div>
-        <div class="search-area">
-            
-            <input id="search-key" type="search" autocomplete="off" placeholder="搜点什么呢？">
-            <button type="button" class="search-form-submit" id="search-local">
-                站内搜索</button>
-            
-            
-        </div>
-        <div id="result-wrap" class="hide">
-            <div id="search-result"></div>
-        </div>
-        <div class="hide">
-            <template id="search-tpl">
-                <div class="item">
-                    <a href="/{path}" title="{title}">
-                        <div class="title">{title}</div>
-                        <div class="content">{content}</div>
-                    </a>
-                </div>
-            </template>
-        </div>
-    </div>
-</div>
-
-    
-    
-<div class="widget">
-    <h3 class="title">
-        社交
-    </h3>
-    <div class="content social">
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
         
-        <a href="//github.com/AAAJQHAAA" rel="external nofollow" title="Github" target="_blank">
-            <i class="git fa fa-git"></i>
-        </a>
-        
-        <a href="mailto:1789622669@qq.com" rel="external nofollow" title="邮箱" target="_blank">
-            <i class="envelope-o fa fa-envelope-o"></i>
-        </a>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-text">作用</span></a></li></ol>
         
     </div>
-</div>
-
-    
-    
-<div class="widget">
-    <h3 class="title">
-        分类
-    </h3>
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E4%BB%96/"><i class="fa" aria-hidden="true">其他</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF/"><i class="fa" aria-hidden="true">后端</i></a><span class="category-list-count">1</span></li></ul>
-</div>
-
-    
-    
-<div class="widget">
-    <h3 class="title">
-        归档
-    </h3>
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/"><i class="fa" aria-hidden="true">2023年11月</i></a><span class="archive-list-count">5</span></li></ul>
-</div>
-
-    
-    
-<div class="widget">
-    <h3 class="title">
-        标签云
-    </h3>
-    <div class="content tag-cloud">
-        
-        <a href="/tags/OnlyOffice/" style="font-size: 20px;">OnlyOffice</a> <a href="/tags/OnlyOffice-Docker%E9%83%A8%E7%BD%B2Document-Server/" style="font-size: 10px;">OnlyOffice Docker部署Document Server</a> <a href="/tags/OnlyOffice-Document-Server/" style="font-size: 10px;">OnlyOffice Document Server</a> <a href="/tags/lombok%E6%B3%A8%E8%A7%A3/" style="font-size: 10px;">lombok注解</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">博客搭建</a>
-        
-    </div>
-</div>
-
-    
-    
-<div class="widget">
-    <h3 class="title">
-        友链
-    </h3>
-    <div class="content friends-link">
-        
-        <a href="https://hexo.io/zh-cn/" class="fa" target="_blank">
-            Hexo官网</a>
-        
-        <a href="https://www.logosc.cn/logo/" class="fa" target="_blank">
-            生成图标</a>
-        
-        <a href="https://cdkm.com/cn/" class="fa" target="_blank">
-            文件转换</a>
-        
-        <a href="https://www.67tool.com/" class="fa" target="_blank">
-            转换工具</a>
-        
-        <a href="https://jiqinghua.top" class="fa" target="_blank">
-            mediasoup在线会议demo</a>
-        
-    </div>
-</div>
-
-    
 </aside>
-
                 
             </div>
         </div>
@@ -313,10 +279,6 @@
         </div>
     </div>
 </div>
-
-
-<script src="/js/search.js?rev=@@hash.js"></script>
-
 
 
 
