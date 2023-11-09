@@ -23,8 +23,7 @@
 
 
 <meta name="description" content="作用
-@SneakyThrows注解为代码生成一个tr&#123;&#125;catch&#123;&#125;块,并把异常向上抛出来
-作用在方法、构造方法上123456789101112pac..." />
+它作用于类，将其变成建造者模式，可以以链的形式调用12345678910111213141516171819202122232425262728293031323334353637pack..." />
 
 
 <meta name="robots" content="all" />
@@ -35,7 +34,7 @@
 
 <title>
     
-    注解@SneakyThrows |
+    注解@Builder |
     
     JQH
 </title>
@@ -144,9 +143,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="注解@SneakyThrows">
+        <h1 id="注解@Builder">
             
-            注解@SneakyThrows
+            注解@Builder
             
         </h1>
         <div class="post-meta">
@@ -171,7 +170,7 @@
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
         <span class="date-meta">
-            2023/11/08</span>
+            2023/11/09</span>
     </span>
     
     
@@ -182,15 +181,12 @@
     
     <div class="post-body post-content">
         <h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><ul>
-<li><code>@SneakyThrows</code>注解为代码生成一个<code>tr&#123;&#125;catch&#123;&#125;</code>块,并把异常向上抛出来</li>
-<li>作用在方法、构造方法上<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> lombok;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.ElementType;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Retention;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.RetentionPolicy;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Target;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Target(&#123;ElementType.METHOD, ElementType.CONSTRUCTOR&#125;)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.SOURCE)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> SneakyThrows &#123;</span><br><span class="line">    Class&lt;? <span class="keyword">extends</span> <span class="title class_">Throwable</span>&gt;[] value() <span class="keyword">default</span> &#123;Throwable.class&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>java中常见的异常有两种：<ul>
-<li><code>Exception</code>即非运行时异常(编译异常)</li>
-<li><code>RuntimeException</code>即运行时异常</li>
+<li>它作用于类，将其变成建造者模式，可以以链的形式调用<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> lombok;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.ElementType;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Retention;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.RetentionPolicy;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Target;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Target(&#123;ElementType.TYPE, ElementType.METHOD, ElementType.CONSTRUCTOR&#125;)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.SOURCE)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Builder &#123;</span><br><span class="line">    String <span class="title function_">builderMethodName</span><span class="params">()</span> <span class="keyword">default</span> <span class="string">&quot;builder&quot;</span>;</span><br><span class="line"></span><br><span class="line">    String <span class="title function_">buildMethodName</span><span class="params">()</span> <span class="keyword">default</span> <span class="string">&quot;build&quot;</span>;</span><br><span class="line"></span><br><span class="line">    String <span class="title function_">builderClassName</span><span class="params">()</span> <span class="keyword">default</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">boolean</span> <span class="title function_">toBuilder</span><span class="params">()</span> <span class="keyword">default</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    AccessLevel <span class="title function_">access</span><span class="params">()</span> <span class="keyword">default</span> AccessLevel.PUBLIC;</span><br><span class="line"></span><br><span class="line">    String <span class="title function_">setterPrefix</span><span class="params">()</span> <span class="keyword">default</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Target(&#123;ElementType.FIELD&#125;)</span></span><br><span class="line">    <span class="meta">@Retention(RetentionPolicy.SOURCE)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@interface</span> Default &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Target(&#123;ElementType.FIELD, ElementType.PARAMETER&#125;)</span></span><br><span class="line">    <span class="meta">@Retention(RetentionPolicy.SOURCE)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@interface</span> ObtainVia &#123;</span><br><span class="line">        String <span class="title function_">field</span><span class="params">()</span> <span class="keyword">default</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">        String <span class="title function_">method</span><span class="params">()</span> <span class="keyword">default</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">boolean</span> <span class="title function_">isStatic</span><span class="params">()</span> <span class="keyword">default</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>原理：<ul>
+<li>编译时创建一个内部静态类，有和实体类相同的属性（构造器）</li>
+<li>构造器：所有属性的set方法，返回值是this（链式调用）</li>
 </ul>
 </li>
-<li>正常情况：编译异常需要处理（增加<code>tr&#123;&#125;catch&#123;&#125;</code>或者方法抛出去）<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public void hhh(User user)&#123;</span><br><span class="line">  try &#123;</span><br><span class="line">    int userId = user.getId();</span><br><span class="line">  &#125; catch (Exception e) &#123;</span><br><span class="line">    throw new RuntimeException(e);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><code>@SneakyThrows</code>注解会自动为代码生成一个上面的<code>tr&#123;&#125;catch&#123;&#125;</code>块,并把异常向上抛出来（编辑器不会报错）<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@SneakyThrows</span><br><span class="line">public void hhh(User user)&#123;</span><br><span class="line">   int userId = user.getId();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 
     </div>
@@ -210,17 +206,11 @@
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/2023/11/09/%E5%90%8E%E7%AB%AF/lombok/Builder/" class="pre-post btn btn-default" title='注解@Builder'>
-        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-        <span class="hidden-xs">
-            注解@Builder</span>
-    </a>
     
-    
-    <a href="/2023/11/08/%E5%90%8E%E7%AB%AF/springboot/CrossOrigin/" class="next-post btn btn-default" title='注解@CrossOrigin'>
+    <a href="/2023/11/08/%E5%90%8E%E7%AB%AF/lombok/SneakyThrows/" class="next-post btn btn-default" title='注解@SneakyThrows'>
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            注解@CrossOrigin</span><i class="fa fa-angle-right fa-fw"></i>
+            注解@SneakyThrows</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>
