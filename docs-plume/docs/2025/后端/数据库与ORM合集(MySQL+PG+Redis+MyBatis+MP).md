@@ -1,7 +1,6 @@
 ---
 title: 数据库与 ORM 合集（MySQL + PostgreSQL + Redis + MyBatis + MP）
 createTime: 2025/01/01 00:00:00
-tags:
 permalink: /article/db-orm/
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: 前端框架入门合集（Vue 3 + Three.js）
 createTime: 2025/01/01 00:00:00
-tags:
 permalink: /article/vue3-threejs/
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Spring 全家桶合集（Spring + Boot + Cloud + Security 等）
 createTime: 2025/01/01 00:00:00
-tags:
 permalink: /article/spring-all/
 ---
 

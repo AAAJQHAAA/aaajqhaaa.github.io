@@ -1,7 +1,6 @@
 ---
 title: 开发工具合集（IDEA + Maven + Git + 正则 + 算法 + Blender + Mac）
 createTime: 2025/01/01 00:00:00
-tags:
 permalink: /article/tools/
 ---
 

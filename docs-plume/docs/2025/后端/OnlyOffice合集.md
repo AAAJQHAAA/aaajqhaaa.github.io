@@ -1,14 +1,37 @@
 ---
-title: docker部署社区版DocumentServer文档服务
+title: OnlyOffice合集
 createTime: 2025/02/11 11:18:18
-permalink: /article/qesg4d7d/
+permalink: /article/y8hc5wbh/
 ---
 
-# docker部署社区版DocumentServer文档服务
+# OnlyOffice 文档在线编辑集成
+
+- 抽空学习和整理一下OnlyOffice文档在线编辑的集成和使用
+
+## OnlyOffice介绍
+
+- 官网[https://www.onlyoffice.com/](https://www.onlyoffice.com/)
+- API官网[https://api.onlyoffice.com/](https://api.onlyoffice.com/)
+- 帮助文档[https://helpcenter.onlyoffice.com/](https://helpcenter.onlyoffice.com/)
+    - 开发人员主要关注[ONLYOFFICE Docs](https://helpcenter.onlyoffice.com/installation/docs-index.aspx)
+        - Docs Community Edition【社区版】：免费
+        - Docs Enterprise Edition【企业版】：需购买
+        - Docs Developer Edition【开发者版】：需购买
+        - Docs Cloud Service【云服务版】：需购买
+
+## 集成到文档服务到自己应用的流程
+
+- 1、部署社区版DocumentServer文档服务
+- 2、自己应用的后端实现一些文件操作接口（配置ONLYOFFICE连接，处理文档存储和转换请求）
+    - 可以很多语言实现[官方demo](https://github.com/ONLYOFFICE/document-server-integration)
+- 3、自己的前端vue使用onlyoffice的API实现编辑预览（实现与ONLYOFFICE Document Server的通信，展示文档预览、编辑能力）
+    - 前端vue集成实现[官方教程](https://api.onlyoffice.com/docs/Docs%20API/Get%20Started/Frontend%20Frameworks/Vue)
+
+## docker部署社区版DocumentServer文档服务
 
 - [官网教程](https://helpcenter.onlyoffice.com/installation/docs-community-install-docker.aspx)
 
-## 1、docker安装文档服务器
+### 1、docker安装文档服务器
 
 ```shell script
 # 拉取镜像
@@ -27,7 +50,7 @@ docker run -d \
 onlyoffice/documentserver
 ```
 
-## 2、安装中文字体
+### 2、安装中文字体
 
 - 1、准备Windows下中文字体文件打包好  
     - 控制面板——搜字体——查看安装的字体——再在搜索栏输入【中文】2个字，这些就是需要的中文字体了
@@ -67,7 +90,7 @@ sudo fc-cache -fv
 
 ```
 
-## 3、汉化菜单
+### 3、汉化菜单
 
 ```shell script
 # 进入容器
@@ -82,7 +105,7 @@ docker exec -it documentserver /bin/bash
 
 ```
 
-## 破解连接数限制
+### 破解连接数限制
 进度容器，修改如下文件
 - /var/www/onlyoffice/documentserver/web-apps/apps/documenteditor/main/app.js
 - /var/www/onlyoffice/documentserver/web-apps/apps/documenteditor/mobile/app.js
@@ -93,7 +116,7 @@ docker exec -it documentserver /bin/bash
     - 修改this._state.licenseType=(t或e)为this._state.licenseType=0
 
 
-## 3、配置安全令牌
+### 3、配置安全令牌
 
 - 1、配置文件路径/etc/onlyoffice/documentserver/local.json
 

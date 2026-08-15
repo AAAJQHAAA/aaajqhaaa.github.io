@@ -2,14 +2,19 @@ import { defineNavbarConfig } from 'vuepress-theme-plume'
 // 定义顶部导航菜单
 export const navbar = defineNavbarConfig([
   { text: '首页', link: '/' },
-  { text: '博客', link: '/blog/' },
-  { text: '标签', link: '/blog/tags/' },
+  // { text: '博客', link: '/blog/' },
+  // { text: '标签', link: '/blog/tags/' },
   { text: '归档', link: '/blog/archives/' },
   {
     text: '笔记',
     items: [
-      { text: '示例', link: '/notes/demo/README.md' },
-      { text: 'OnlyOffice', link: '/notes/onlyoffice/README.md' },
+      { text: '示例', link: '/demo/' },
+    ]
+  },
+  {
+    text: 'WebRTC',
+    items: [
+      { text: '浏览器中的 WebRTC', link: '/webrtc/1.basic/' },
     ]
   },
 ])
