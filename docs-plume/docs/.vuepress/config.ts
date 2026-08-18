@@ -90,11 +90,10 @@ export default defineUserConfig({
        * @see https://theme-plume.vuejs.press/config/plugins/code-highlight/
        */
       shiki: {
-        // 强烈建议预设代码块高亮语言，插件默认加载所有语言会产生不必要的时间开销
-        languages: ["js","ts","html","css","md","yml","shell","c","java","xml","yaml","sh","json5","javascript","json","sql","vue","ini","nginx","dockerfile","bash","powershell","typescript"],
-        twoslash: false, // 关闭 twoslash 以避免版本兼容问题
-        whitespace: true, // 启用 空格/Tab 高亮
-        lineNumbers: true, // 启用行号
+        langs: ["js","ts","html","css","md","yml","shell","c","java","xml","yaml","sh","json5","javascript","json","sql","vue","ini","nginx","dockerfile","bash","powershell","typescript"],
+        twoslash: false,
+        whitespace: true,
+        lineNumbers: true,
       },
 
       /* 本地搜索, 默认启用 */
