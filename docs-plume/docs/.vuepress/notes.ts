@@ -9,7 +9,7 @@ const demoNote = defineNoteConfig({
 const webrtcNote = defineNoteConfig({
   dir: 'webrtc/1.basic',
   link: '/webrtc/1.basic/',
-  sidebar: ['', '001', '002', '003', '004', '005', '006', '007', '008'],
+  sidebar: 'auto',
 })
 
 export const notes = defineNotesConfig({
