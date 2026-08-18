@@ -41,15 +41,29 @@ export default defineUserConfig({
      * 博客
      * @see https://theme-plume.vuejs.press/config/basic/#blog
      */
-    // blog: false, // 禁用博客
-    // blog: {
-    //   postList: true, // 是否启用文章列表页
-    //   tags: true, // 是否启用标签页
-    //   archives: true, // 是否启用归档页
-    //   categories: true, // 是否启用分类页
-    //   postCover: 'right', // 文章封面位置
-    //   pagination: 15, // 每页显示文章数量
-    // },
+    // blog 配置已移除，迁移到 collections 中
+    // @see https://theme-plume.vuejs.press/blog/dk58a4t2/
+
+    /**
+     * 集合配置（博客与笔记统一迁移至集合架构）
+     * @see https://theme-plume.vuejs.press/guide/collection/post/
+     */
+    collections: [
+      {
+        type: 'post',
+        dir: 'blog',
+        title: '博客',
+        postList: true,
+        link: '/blog/',
+        linkPrefix: '/blog/',
+        tags: true,
+        tagsLink: '/blog/tags/',
+        archives: true,
+        archivesLink: '/blog/archives/',
+        categories: true,
+        categoriesLink: '/blog/categories/',
+      },
+    ],
 
     /* 博客文章页面链接前缀 */
     article: '/article/',
