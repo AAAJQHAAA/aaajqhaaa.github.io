@@ -41,32 +41,7 @@ export default defineUserConfig({
      * 博客
      * @see https://theme-plume.vuejs.press/config/basic/#blog
      */
-    // blog 配置已移除，迁移到 collections 中
-    // @see https://theme-plume.vuejs.press/blog/dk58a4t2/
-
-    /**
-     * 集合配置（博客与笔记统一迁移至集合架构）
-     * @see https://theme-plume.vuejs.press/guide/collection/post/
-     */
-    collections: [
-      {
-        type: 'post',
-        dir: 'blog',
-        title: '博客',
-        postList: true,
-        link: '/blog/',
-        linkPrefix: '/blog/',
-        tags: true,
-        tagsLink: '/blog/tags/',
-        archives: true,
-        archivesLink: '/blog/archives/',
-        categories: true,
-        categoriesLink: '/blog/categories/',
-      },
-    ],
-
-    /* 博客文章页面链接前缀 */
-    article: '/article/',
+    // blog 与 collections 配置迁移至 plume.config.ts
 
     /**
      * 编译缓存，加快编译速度

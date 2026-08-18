@@ -47,10 +47,25 @@ export default defineThemeConfig({
   navbar,
 
   /**
-   * 集合配置（原 notes 配置迁移至 doc 类型集合）
+   * 集合配置（博客与笔记统一迁移至集合架构）
+   * @see https://theme-plume.vuejs.press/guide/collection/post/
    * @see https://theme-plume.vuejs.press/guide/collection/doc/
    */
   collections: [
+    {
+      type: 'post',
+      dir: 'blog',
+      title: '博客',
+      postList: true,
+      link: '/blog/',
+      linkPrefix: '/blog/',
+      tags: true,
+      tagsLink: '/blog/tags/',
+      archives: true,
+      archivesLink: '/blog/archives/',
+      categories: true,
+      categoriesLink: '/blog/categories/',
+    },
     {
       type: 'doc',
       dir: 'notes/demo',
