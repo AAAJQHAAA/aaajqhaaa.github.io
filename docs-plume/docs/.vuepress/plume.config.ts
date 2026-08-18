@@ -1,6 +1,5 @@
 import { defineThemeConfig } from 'vuepress-theme-plume'
 import { navbar } from './navbar'
-import { notes } from './notes'
 
 /**
  * @see https://theme-plume.vuejs.press/config/basic/
@@ -46,7 +45,27 @@ export default defineThemeConfig({
   },
 
   navbar,
-  notes,
+
+  /**
+   * 集合配置（原 notes 配置迁移至 doc 类型集合）
+   * @see https://theme-plume.vuejs.press/guide/collection/doc/
+   */
+  collections: [
+    {
+      type: 'doc',
+      dir: 'notes/demo',
+      title: '示例',
+      linkPrefix: '/demo/',
+      sidebar: ['', 'foo', 'bar'],
+    },
+    {
+      type: 'doc',
+      dir: 'notes/webrtc/1.basic',
+      title: '1.basic',
+      linkPrefix: '/webrtc/1.basic/',
+      sidebar: 'auto',
+    },
+  ],
 
   /**
    * 公告板
