@@ -14,7 +14,7 @@
     "docs:build": "vuepress build docs --clean-cache --clean-temp",
     "docs:preview": "http-server docs/.vuepress/dist",
     "vp-update": "npx vp-update",
-    "docs:deploy": "npm run docs:build && git subtree push --prefix=docs/.vuepress/dist origin main"
+    "docs:deploy": "npm run docs:build && node scripts/deploy.mjs"
   },
   "devDependencies": {
     "@vuepress/bundler-vite": "2.0.0-rc.30",

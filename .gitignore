@@ -4,3 +4,4 @@
 node_modules/
 _multiconfig.yml
 package-lock.json
+.deploy-main/
