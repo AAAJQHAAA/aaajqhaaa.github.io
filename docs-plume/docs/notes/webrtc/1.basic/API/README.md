@@ -194,4 +194,17 @@ dtmf.ontonechange = (event) => {
 
 完整的 WebRTC 浏览器 API TypeScript 类型定义（带中文注释），覆盖媒体采集、连接核心、RTP、数据通道、ICE、DTMF、DTLS、错误处理等全部接口。
 
-@[code](./webrtc.types.d.ts)
+> 源文件：[webrtc.types.d.ts](./webrtc.types.d.ts)（约 1400 行）
+
+```ts
+/**
+ * @file 标准 WebRTC 浏览器 API 类型定义（带中文注释）
+ * @coverage
+ *   - Media Capture and Streams（媒体采集：getUserMedia、MediaStream、MediaStreamTrack）
+ *   - WebRTC 1.0（RTCPeerConnection 系列 + ICE/DTLS/SRTP/SCTP）
+ *   - MediaRecorder（媒体录制）
+ *   - RTP Sender / Receiver / Transceiver + getStats 统计
+ *   - RTCDataChannel 数据通道 + DTMF
+ */
+// ... 完整内容见源文件
+```
